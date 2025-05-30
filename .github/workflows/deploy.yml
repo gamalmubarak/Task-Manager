@@ -15,9 +15,7 @@ jobs:
         - name: Test
           run: |
             npm install
-            npm run build
-            npm run start &
-            npm run test-component
+            npm run test
 
         - name: Deploy to Render
           env:

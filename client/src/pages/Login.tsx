@@ -43,15 +43,17 @@ const handleSubmit = async (e: FormEvent) => {
       <form className='form' onSubmit={handleSubmit}>
         <h1>Login</h1>
         {errorMessage && <p className='error-message'>{errorMessage}</p>}
-        <label>Username</label>
+        <label htmlFor="username">Username</label>
         <input 
+          id='username'
           type='text'
           name='username'
           value={loginData.username || ''}
           onChange={handleChange}
         />
-      <label>Password</label>
+      <label htmlFor="password">Password</label>
         <input 
+          id='password'
           type='password'
           name='password'
           value={loginData.password || ''}
