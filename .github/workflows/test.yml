@@ -1,5 +1,5 @@
 # Name of workflow
-name: Testing updates
+name: Testing 
 
 # Trigger workflow on all pull requests
 on:
@@ -24,17 +24,11 @@ jobs:
         with:
           node-version: 21.x
 
-      - name: Install dependencies 
-        run: |
-          npm install
-          cd server && npm install
-          cd ../client && npm install
+      - name: Install dependencies
+        run: npm install
 
       - name: Run Build
-        run: |
-          npm run build
+        run: npm run build
 
-      - name: Run test
-        run: |
-          npm run test
-        
+      - name: Run tests
+        run: npm test
