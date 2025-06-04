@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import Board from './Board';
 import { MockedProvider } from '@apollo/client/testing';
 import { MemoryRouter } from 'react-router-dom'; 
+import { gql } from '@apollo/client';
 
 
 const GET_TICKETS = gql`
