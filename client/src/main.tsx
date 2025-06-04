@@ -19,11 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <ProtectedRoute>
-            <Board />
-          </ProtectedRoute>
-        ),
+        element: <Board />, // <-- No ProtectedRoute here
       },
       {
         path: 'edit',
