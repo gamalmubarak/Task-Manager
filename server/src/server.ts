@@ -1,8 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import './config/connection.js'; // Ensure Mongoose connects before anything else
-
+import mongoose from 'mongoose';
 import express from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
@@ -13,42 +12,44 @@ import jwt from 'jsonwebtoken';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://gamalmubarak87:password123!@cluster0.boislht.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
-await server.start();
+async function startServer() {
+  await mongoose.connect(MONGODB_URI);
+  console.log('Connected to MongoDB');
 
-app.use(express.json());
+  await server.start();
+  console.log('ApolloServer started.');
 
-// Auth context for Apollo
-app.use('/graphql', expressMiddleware(server, {
-  context: async ({ req }) => {
-    const authHeader = req.headers.authorization || '';
-    const token = authHeader.replace('Bearer ', '');
-    if (token) {
-      try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY || 'devsecret') as any;
-        // Use Mongoose's findById instead of Sequelize's findByPk
-        const user = await User.findById(decoded.id);
-        return { user };
-      } catch {
-        return {};
+  app.use(express.json());
+
+  app.use('/graphql', expressMiddleware(server, {
+    context: async ({ req }) => {
+      const authHeader = req.headers.authorization || '';
+      const token = authHeader.replace('Bearer ', '');
+      if (token) {
+        try {
+          const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY || 'secret') as { id: string };
+          const user = await User.findById(decoded.id);
+          return { user };
+        } catch {
+          return {};
+        }
       }
+      return {};
     }
-    return {};
-  }
-}));
+  }));
 
-// Serve static files for client
-app.use(express.static('../client/dist'));
+  app.use(express.static('../client/dist'));
 
-// Start the server after Mongoose connection is open
-import mongoose from 'mongoose';
-mongoose.connection.once('open', () => {
   app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/graphql`);
   });
-});
+}
+
+startServer();
