@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Board from './Board';
 import { MockedProvider } from '@apollo/client/testing';
-import { gql } from '@apollo/client';
+import { MemoryRouter } from 'react-router-dom'; 
 
 
 const GET_TICKETS = gql`
@@ -38,10 +38,17 @@ const mocks = [
 ];
 
 describe('Board', () => {
+  beforeAll(() => {
+    // Mock auth.loggedIn to always return true for tests
+    jest.spyOn(require('../utils/auth').default, 'loggedIn').mockReturnValue(true);
+  });
+
   it('renders tickets from GraphQL', async () => {
     render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <Board />
+        <MemoryRouter>
+          <Board />
+        </MemoryRouter>
       </MockedProvider>
     );
     expect(await screen.findByText(/Test Ticket/)).toBeInTheDocument();
