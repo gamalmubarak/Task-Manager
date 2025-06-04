@@ -4,6 +4,8 @@ import Board from './Board';
 import { MockedProvider } from '@apollo/client/testing';
 import { MemoryRouter } from 'react-router-dom'; 
 import { gql } from '@apollo/client';
+import { vi } from 'vitest';
+import auth from '../utils/auth';
 
 
 const GET_TICKETS = gql`
@@ -18,30 +20,30 @@ const GET_TICKETS = gql`
   }
 `;
 
-
 const mocks = [
   {
     request: { query: GET_TICKETS },
     result: {
       data: {
         tickets: [
-          {
+           {
             id: '1',
             name: 'Test Ticket',
-            status: 'Todo',
+            status: 'To Do',
             description: 'desc',
             assignedUser: { username: 'user1' }
           }
-        ]
-      }
-    }
-  }
+        ],
+      },
+    },
+  },
 ];
+
 
 describe('Board', () => {
   beforeAll(() => {
     // Mock auth.loggedIn to always return true for tests
-    jest.spyOn(require('../utils/auth').default, 'loggedIn').mockReturnValue(true);
+    vi.spyOn(auth, 'loggedIn').mockReturnValue(true);
   });
 
   it('renders tickets from GraphQL', async () => {
