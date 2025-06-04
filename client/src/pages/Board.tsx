@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import Swimlane from '../components/Swimlane';
-//import taskimage from '../assets/taskmanager.png';
+import taskimage from '../assets/task-management.png';
 import auth from '../utils/auth';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
@@ -64,7 +64,7 @@ const Board = () => {
   if (!isLoggedIn) {
     return (
       <div className="login-notice">
-        {/*<img src={taskimage} alt="Task Manager Logo" />*/}
+        <img src={taskimage} alt="Task Manager" className="task-image" />
         <h1>Welcome to Task Manager App!</h1>
         <p>Let's get organized. Start by adding your first task and take control of your productivity.</p>
       </div>
