@@ -12,14 +12,17 @@ export default {
     ticket: async (_: any, { id }: any) => Ticket.findById(id).populate('assignedUser', 'username'),
   },
   Mutation: {
-    login: async (_: any, { username, password }: any) => {
-      const user = await User.findOne({ username });
-      if (!user) throw new Error('Invalid credentials');
-      const valid = await user.comparePassword(password);
-      if (!valid) throw new Error('Invalid credentials');
-      const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
-      return { token, user };
-    },
+   login: async (_: any, { username, password }: any) => {
+  const user = await User.findOne({ username });
+  if (!user) throw new Error('Invalid credentials');
+  console.log('User password in DB:', user.password);
+  console.log('Password entered:', password);
+  const valid = await user.comparePassword(password);
+  console.log('Password valid?', valid);
+  if (!valid) throw new Error('Invalid credentials');
+  const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+  return { token, user };
+},
     createUser: async (_: any, { username, password }: any) => {
       const user = new User({ username, password });
       await user.save();
