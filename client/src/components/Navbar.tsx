@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className='nav'>
       <div className='nav-title'>
-        <Link to='/'>Task Manager</Link>
+        <Link to='/'>Task Manager App</Link>
       </div>
       <ul>
       {
