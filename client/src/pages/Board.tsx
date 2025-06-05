@@ -94,9 +94,11 @@ const Board = () => {
             <option value="status">Sort by Status</option>
           </select>
         </div>
-        <button type="button" id="create-ticket-link">
-          <Link to="/create">New Ticket</Link>
-        </button>
+       <Link to="/create">
+         <button type="button" id="create-ticket-link" className="nav-btn">
+         New Ticket
+         </button>
+       </Link>
         <div className="board-display">
           {boardStates.map(status => {
             const filteredByStatus = filteredTickets.filter(
