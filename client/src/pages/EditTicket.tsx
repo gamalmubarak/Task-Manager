@@ -98,7 +98,7 @@ const EditTicket = () => {
           value={ticket.status || ''}
           onChange={handleChange}
         >
-          <option value='Todo'>Todo</option>
+          <option value='To Do'>To Do</option>
           <option value='In Progress'>In Progress</option>
           <option value='Done'>Done</option>
         </select>

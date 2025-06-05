@@ -3,6 +3,7 @@ import { ApolloProvider } from '@apollo/client';
 import client from './apolloClient';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Board from './pages/Board';
+import Signup from './pages/Signup';
 import Login from './pages/Login';
 import EditTicket from './pages/EditTicket';
 import CreateTicket from './pages/CreateTicket';
@@ -17,27 +18,11 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <Board />, // <-- No ProtectedRoute here
-      },
-      {
-        path: 'edit',
-        element: (
-          <ProtectedRoute>
-            <EditTicket />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'create',
-        element: (
-          <ProtectedRoute>
-            <CreateTicket />
-          </ProtectedRoute>
-        ),
-      },
+      { index: true, element: <Board /> },
+      { path: 'edit', element: <ProtectedRoute><EditTicket /></ProtectedRoute> },
+      { path: 'create', element: <ProtectedRoute><CreateTicket /></ProtectedRoute> },
       { path: 'login', element: <Login /> },
+      { path: 'signup', element: <Signup /> }, 
     ],
   },
 ]);

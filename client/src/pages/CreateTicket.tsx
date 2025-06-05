@@ -39,7 +39,7 @@ const CreateTicket = () => {
   id: '',
   name: '',
   description: '',
-  status: 'Todo',
+  status: 'To Do',
   assignedUserId: '',
   assignedUser: null
 });
@@ -99,7 +99,7 @@ const CreateTicket = () => {
           onChange={handleChange}
           className="input-select"
         >
-          <option value='Todo'>Todo</option>
+          <option value='To Do'>To Do</option>
           <option value='In Progress'>In Progress</option>
           <option value='Done'>Done</option>
         </select>
