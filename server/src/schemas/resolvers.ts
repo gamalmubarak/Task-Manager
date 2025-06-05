@@ -41,9 +41,13 @@ export default {
       return ticket;
     },
     deleteTicket: async (_: any, { id }: any, { user }: any) => {
-      if (!user) throw new Error('Not authenticated');
-      const ticket = await Ticket.findByIdAndDelete(id);
-      return !!ticket;
-    },
+  if (!user) throw new Error('Not authenticated');
+  const ticket = await Ticket.findByIdAndDelete(id);
+  if (ticket) {
+    return { success: true, message: "Ticket deleted" };
+  } else {
+    return { success: false, message: "Ticket not found" };
+  }
+},
   }
 };
