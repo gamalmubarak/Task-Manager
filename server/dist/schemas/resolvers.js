@@ -47,7 +47,12 @@ export default {
             if (!user)
                 throw new Error('Not authenticated');
             const ticket = await Ticket.findByIdAndDelete(id);
-            return !!ticket;
+            if (ticket) {
+                return { success: true, message: "Ticket deleted" };
+            }
+            else {
+                return { success: false, message: "Ticket not found" };
+            }
         },
     }
 };

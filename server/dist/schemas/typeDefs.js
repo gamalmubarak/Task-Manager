@@ -18,6 +18,11 @@ export default gql `
     user: User!
   }
 
+   type DeleteTicketResponse {
+    success: Boolean!
+    message: String
+  }
+
   type Query {
     me: User
     users: [User!]!
@@ -30,6 +35,6 @@ export default gql `
     createUser(username: String!, password: String!): User!
     createTicket(name: String!, description: String, status: String!, assignedUserId: ID): Ticket!
     updateTicket(id: ID!, name: String, description: String, status: String, assignedUserId: ID): Ticket!
-    deleteTicket(id: ID!): Boolean!
+    deleteTicket(id: ID!): DeleteTicketResponse!
   }
 `;
