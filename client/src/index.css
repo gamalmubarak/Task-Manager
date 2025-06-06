@@ -29,8 +29,8 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  border: #1c7eff;
-  color: #1c7eff;
+  border: #1864c7;
+  color: #1864c7;
 }
 
 body {
@@ -56,14 +56,14 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1c7eff;
+  background-color: #1864c7;
   cursor: pointer;
   transition: border-color 0.25s;
   color: white;
 }
 button:hover {
-  border-color: #1c7eff;
-  color: #1c7eff;
+  border-color: #1864c7;
+  color: #1864c7;
 }
 button:focus,
 button:focus-visible {
@@ -110,7 +110,7 @@ tbody tr:nth-child(odd) {
 }
 
 .nav-title a {
-  color: #1c7eff;
+  color: #1864c7;
 }
 
 .nav-item {
@@ -152,23 +152,23 @@ tbody tr:nth-child(odd) {
 }
 
 .todo {
-  background-color: #1c7eff27;
-  color: #1c7eff;
-  border: 1px solid #1c7eff;
+  background-color: #1864c727;
+  color: #1864c7;
+  border: 1px solid #1864c7;
   width: 20rem;
 }
 
 .inprogress {
-  background-color: #1c7eff27;
-  color: #1c7eff;
-  border: 1px solid #1c7eff;
+  background-color: #1864c727;
+  color: #1864c7;
+  border: 1px solid #1864c7;
   width: 20rem;
 }
 
 .done {
-  background-color: #1c7eff27;
-  color: #1c7eff;
-  border: 1px solid #1c7eff;
+  background-color: #1864c727;
+  color: #1864c7;
+  border: 1px solid #1864c7;
   width: 20rem;
 }
 
@@ -179,7 +179,7 @@ tbody tr:nth-child(odd) {
   margin-bottom: 10px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 0.1em solid #1c7eff;
+  border: 0.1em solid #1864c7;
 }
 
 .container {
@@ -200,7 +200,7 @@ tbody tr:nth-child(odd) {
   width: 100%;
   height: 80%;
   background-color: white;
-  border: 1px solid #1c7eff;
+  border: 1px solid #1864c7;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -209,7 +209,7 @@ tbody tr:nth-child(odd) {
 }
 
 .form > h1, .form > label {
-  color: #1c7eff;
+  color: #1864c7;
 }
 
 .form > input {
@@ -230,13 +230,13 @@ tbody tr:nth-child(odd) {
   min-height: 30px;
   min-width: 30px;
   background-color: white;
-  border: #1c7eff solid 1px;
+  border: #1864c7 solid 1px;
   color: black;
 }
 
 .editBtn,
 .deleteBtn {
-  background-color: #1c7eff;
+  background-color: #1864c7;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -251,43 +251,43 @@ tbody tr:nth-child(odd) {
 
 .editBtn:hover,
 .deleteBtn:hover {
-  border-color: #1c7eff;
-  color: #1c7eff;
+  border-color: #1864c7;
+  color: #1864c7;
   background-color: white;
 }
 .login-notice {
   width: 100%;
   align-items: center;
   justify-content: center;
-  color: #1c7eff
+  color: #1864c7
 }
 
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #1c7eff;
+    color: #1864c7;
     background-color: white;
   }
   a:hover {
-    color: #1c7eff;
+    color: #1864c7;
   }
   button {
     background-color: white;
-    color: #1c7eff;
+    color: #1864c7;
   }
 }
 
 .input-select {
-  color: #1c7eff;
+  color: #1864c7;
   background-color: white;
 }
 
 .app-footer {
   width: 100%;
   height: 50px;
-  background-color: #1c7eff27;
-  border: #1c7eff solid 1px;
-  color: #1c7eff;
+  background-color: #1864c727;
+  border: #1864c7 solid 1px;
+  color: #1864c7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -301,7 +301,7 @@ tbody tr:nth-child(odd) {
 .footer-social a {
   margin: 0 10px;
   font-size: 20px;
-  color: #1c7eff;
+  color: #1864c7;
   transition: color 0.3s;
 }
 
@@ -309,7 +309,7 @@ tbody tr:nth-child(odd) {
   color: white;
 }
 .nav-btn {
-  background-color: #1c7eff;
+  background-color: #1864c7;
   color: white;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -321,8 +321,8 @@ tbody tr:nth-child(odd) {
   transition: border-color 0.25s;
 }
 .nav-btn:hover {
-  border-color: #1c7eff;
-  color: #1c7eff;
+  border-color: #1864c7;
+  color: #1864c7;
   background-color: white;
 }
 .nav-btn + .nav-btn {
