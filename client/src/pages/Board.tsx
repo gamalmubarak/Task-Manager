@@ -95,7 +95,7 @@ const Board = () => {
           </select>
         </div>
        <Link to="/create">
-         <button type="button" id="create-ticket-link" className="nav-btn">
+         <button type="button" id="create-ticket-link" className="nav-btn" aria-label="Create a new ticket">
          New Ticket
          </button>
        </Link>
