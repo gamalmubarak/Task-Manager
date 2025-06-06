@@ -11,11 +11,10 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "client:build": "cd client && npm run build",
     "client:dev": "cd client && npm run dev",
-    "build": "cd client && npm run build",
+    "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
     "seed": "cd server && npm run seed",
     "render-build": "npm install && npm run build",
     "test": "cd client && npm run test"
-    
   },
   "keywords": [],
   "author": "",
@@ -25,11 +24,12 @@
     "cypress": "^13.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "wait-on": "^8.0.3"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
     "apollo-server-express": "^3.13.0",
-     "@vitejs/plugin-react": "^4.3.1",
     "vitest": "^2.0.3"
   }
 }
