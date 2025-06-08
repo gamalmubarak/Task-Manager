@@ -1,19 +1,27 @@
 // filepath: server/src/seeds/index.ts
-import mongoose from 'mongoose';
-import '../config/connection.js';
+// Update the path below if your mongoose connection file is located elsewhere
+import db from '../config/connection.js';
 import { seedUsers } from './user-seeds.js';
 import { seedTickets } from './ticket-seeds.js';
-const seedAll = async () => {
+import { User } from '../models/user.js';
+import { Ticket } from '../models/ticket.js';
+const seed = async () => {
     try {
-        await mongoose.connection.dropDatabase();
+        await db();
+        // Clear existing records
+        await User.deleteMany({});
+        await Ticket.deleteMany({});
+        // Seed users
         await seedUsers();
-        await seedTickets();
-        console.log('\n----- DATABASE SEEDED -----\n');
+        const users = await User.find();
+        // Seed tickets
+        await seedTickets(users);
+        console.log('✅ Seeded users and tickets');
         process.exit(0);
     }
-    catch (error) {
-        console.error('Error seeding database:', error);
+    catch (err) {
+        console.error('❌ Error during seeding:', err);
         process.exit(1);
     }
 };
-mongoose.connection.once('open', seedAll);
+seed();

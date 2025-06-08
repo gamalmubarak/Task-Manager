@@ -1,26 +1,26 @@
-import { Link } from 'react-router-dom';
-
 import { TicketData } from '../interfaces/TicketData';
-import { ApiMessage } from '../interfaces/ApiMessage';
-import { MouseEventHandler } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface TicketCardProps {
   ticket: TicketData;
-  deleteTicket: (ticketId: number) => Promise<ApiMessage>
+  deleteTicket: (ticketId: string) => Promise<void>;
 }
 
 const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
+  const navigate = useNavigate();
 
-  const handleDelete: MouseEventHandler<HTMLButtonElement> = async (event) => {
-    const ticketId = Number(event.currentTarget.value);
-    if (!isNaN(ticketId)) {
+  const handleDelete = async () => {
+    if (ticket.id) {
       try {
-        const data = await deleteTicket(ticketId);
-        return data;
+        await deleteTicket(ticket.id);
       } catch (error) {
         console.error('Failed to delete ticket:', error);
       }
     }
+  };
+
+  const handleEdit = () => {
+    navigate('/edit', { state: { id: ticket.id } });
   };
 
   return (
@@ -28,8 +28,8 @@ const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
       <h3>{ticket.name}</h3>
       <p>{ticket.description}</p>
       <p>{ticket.assignedUser?.username}</p>
-      <Link to='/edit' state={{id: ticket.id}} type='button' className='editBtn'>Edit</Link>
-      <button type='button' value={String(ticket.id)} onClick={handleDelete} className='deleteBtn'>Delete</button>
+      <button type='button' onClick={handleEdit} className='editBtn'>Edit</button>
+      <button type='button' onClick={handleDelete} className='deleteBtn'>Delete</button>
     </div>
   );
 };

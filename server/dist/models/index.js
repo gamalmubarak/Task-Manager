@@ -1,2 +1,3 @@
-export { User } from './user.js';
-export { Ticket } from './ticket.js';
+import { User } from './user.js';
+import { Ticket } from './ticket.js';
+export { User, Ticket };

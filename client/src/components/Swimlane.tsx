@@ -1,17 +1,16 @@
 import TicketCard from './TicketCard';
 import { TicketData } from '../interfaces/TicketData';
-import { ApiMessage } from '../interfaces/ApiMessage';
 
 interface SwimlaneProps {
   title: string;
   tickets: TicketData[];
-  deleteTicket: (ticketId: number) => Promise<ApiMessage>
+  deleteTicket: (ticketId: string) => Promise<void>;
 }
 
 const Swimlane = ({ title, tickets, deleteTicket }: SwimlaneProps) => {
   const getStatusClass = (status: string) => {
     switch (status) {
-      case 'Todo':
+      case 'To Do':
         return 'swim-lane todo';
       case 'In Progress':
         return 'swim-lane inprogress';
